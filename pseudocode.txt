@@ -1,0 +1,106 @@
+Friend Finder Pseudocode:
+
+Written by Alex Chalyy on 4/19/2019.
+
+1. Create a repo in gihub with the following file tree: DONE
+
+  FriendFinder
+    - .gitignore
+    - app
+      - data
+        - friends.js
+      - public
+        - home.html
+        - survey.html
+      - routing
+        - apiRoutes.js
+        - htmlRoutes.js
+    - node_modules
+    - package.json
+    - server.js
+
+2. Create home.html file with layout like in the following link: https://friend-finder-fsf.herokuapp.com/.
+
+   a.   Use bootstrap to make the website mobile compatible. DONE.
+
+   b.   The header container should state:
+
+        "Friend Finder".
+
+   c.   The body of container should have the following paragraphs:
+
+        "Answer a few basic questions"
+
+        "Then find the friend with the greatest compatibility!"
+
+   d.   The body should also contain "Go to Survey" button.
+
+   c.   The footer should have the following links:
+
+        i.  "API Friends List".
+
+        ii. "GitHub Repo - link to github repo for the project.
+
+3.  Create survey.html file with layout like in the following link: https://friend-finder-fsf.herokuapp.com/survey
+
+     a.   Use bootstrap to make the website mobile compatible.
+
+     b.   The header should be "Survey Questions"
+
+     c.   There should have dividor line below header.
+
+     d.   Below, there should have container with heading "About You"
+
+          The conainer should include two text boxes:
+
+          "Name (Required)"
+
+          "Link to Photo Image (Required)"
+
+    c.    Below, there should be 10 questions with drop down menues with options 1-5 (as shown in the link).
+
+    d.    Below, there should be submit button.
+
+    e.    Below, there should be two links:
+
+          i.  "API Friends List".
+
+          ii. "GitHub Repo - link to github repo for the project.
+
+4.  Create server.js file. 
+
+    a.    The file should include express npm package.
+
+    b.    The file should include path npm package.
+
+    c.    Set up express connection.
+
+    d.    Require htmlRoutes.
+
+    e.    Require apiRoutes.
+
+    f.    Listen to port (local host).
+
+5.  Create htmlRoutes.js file.
+
+    a.    Require path.
+
+    b.    Make get route to survey page.
+
+    c.    Make default catch-all route that leads to home.html.
+
+6.  Create apiRoute.js file.
+
+    a.    Make get rout with url /api/friends (display a JSON of all possible friends).
+
+    b.    Make post rout /api/friends, this will add new user to json array of users and handle the compatibility logic
+
+          Every time a call is made, if its correct, add it to friends.js array of json objects (friends)
+
+          The call accepts the name, link to photo and 10 question answers (with integers of 1-5)
+
+          Go thru every array json element of friends.js and pic the array element with the smallest absolute value sum difference for questions
+
+          display the proper result (name, and picture) in modal window
+
+7.  Make friends.js file with array of json objects with name, photo link, and scores (array of 10 integers).
