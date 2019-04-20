@@ -89,11 +89,11 @@ Written by Alex Chalyy on 4/19/2019.
 
     c.    Make default catch-all route that leads to home.html. DONE
 
-6.  Create apiRoute.js file.
+6.  Create apiRoute.js file. DONE
 
-    a.    Make get rout with url /api/friends (display a JSON of all possible friends).
+    a.    Make get route with url /api/friends (display a JSON of all possible friends). DONE
 
-    b.    Make post rout /api/friends, this will add new user to json array of users and handle the compatibility logic
+    b.    Make post route /api/friends, this will add new user to json array of users and handle the compatibility logic
 
           Every time a call is made, if its correct, add it to friends.js array of json objects (friends)
 
