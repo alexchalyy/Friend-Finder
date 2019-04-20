@@ -23,23 +23,23 @@ Written by Alex Chalyy on 4/19/2019.
 
    a.   Use bootstrap to make the website mobile compatible. DONE.
 
-   b.   The header container should state:
+   b.   The header container should state: DONE
 
-        "Friend Finder".
+        "Friend Finder". DONE
 
-   c.   The body of container should have the following paragraphs:
+   c.   The body of container should have the following paragraphs: DONE
 
-        "Answer a few basic questions"
+        "Answer a few basic questions" DONE
 
-        "Then find the friend with the greatest compatibility!"
+        "Then find the friend with the greatest compatibility!" DONE
 
-   d.   The body should also contain "Go to Survey" button.
+   d.   The body should also contain "Go to Survey" button. DONE
 
-   c.   The footer should have the following links:
+   c.   The footer should have the following links: DONE
 
-        i.  "API Friends List".
+        i.  "API Friends List". DONE
 
-        ii. "GitHub Repo - link to github repo for the project.
+        ii. "GitHub Repo - link to github repo for the project. DONE
 
 3.  Create survey.html file with layout like in the following link: https://friend-finder-fsf.herokuapp.com/survey
 
