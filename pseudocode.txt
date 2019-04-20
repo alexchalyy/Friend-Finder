@@ -103,4 +103,4 @@ Written by Alex Chalyy on 4/19/2019.
 
           display the proper result (name, and picture) in modal window
 
-7.  Make friends.js file with array of json objects with name, photo link, and scores (array of 10 integers).
+7.  Make friends.js file with array of json objects with name, photo link, and scores (array of 10 integers). DONE
