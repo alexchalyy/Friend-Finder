@@ -19,7 +19,7 @@ Written by Alex Chalyy on 4/19/2019.
     - package.json
     - server.js
 
-2. Create home.html file with layout like in the following link: https://friend-finder-fsf.herokuapp.com/.
+2. Create home.html file with layout like in the following link: https://friend-finder-fsf.herokuapp.com/. DONE
 
    a.   Use bootstrap to make the website mobile compatible. DONE.
 
@@ -81,13 +81,13 @@ Written by Alex Chalyy on 4/19/2019.
 
     f.    Listen to port (local host). DONE
 
-5.  Create htmlRoutes.js file.
+5.  Create htmlRoutes.js file. DONE
 
-    a.    Require path.
+    a.    Require path. DONE
 
-    b.    Make get route to survey page.
+    b.    Make get route to survey page. DONE
 
-    c.    Make default catch-all route that leads to home.html.
+    c.    Make default catch-all route that leads to home.html. DONE
 
 6.  Create apiRoute.js file.
 
