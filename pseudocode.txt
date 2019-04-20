@@ -41,45 +41,45 @@ Written by Alex Chalyy on 4/19/2019.
 
         ii. "GitHub Repo - link to github repo for the project. DONE
 
-3.  Create survey.html file with layout like in the following link: https://friend-finder-fsf.herokuapp.com/survey
+3.  Create survey.html file with layout like in the following link: https://friend-finder-fsf.herokuapp.com/survey DONE
 
-     a.   Use bootstrap to make the website mobile compatible.
+     a.   Use bootstrap to make the website mobile compatible. DONE
 
-     b.   The header should be "Survey Questions"
+     b.   The header should be "Survey Questions" DONE
 
-     c.   There should have dividor line below header.
+     c.   There should have dividor line below header. DONE
 
-     d.   Below, there should have container with heading "About You"
+     d.   Below, there should have container with heading "About You" DONE
 
-          The conainer should include two text boxes:
+          The conainer should include two text boxes: DONE
 
-          "Name (Required)"
+          "Name (Required)" DONE
 
-          "Link to Photo Image (Required)"
+          "Link to Photo Image (Required)" DONE
 
-    c.    Below, there should be 10 questions with drop down menues with options 1-5 (as shown in the link).
+    c.    Below, there should be 10 questions with drop down menues with options 1-5 (as shown in the link). DONE
 
-    d.    Below, there should be submit button.
+    d.    Below, there should be submit button. DONE
 
-    e.    Below, there should be two links:
+    e.    Below, there should be two links: DONE
 
-          i.  "API Friends List".
+          i.  "API Friends List". DONE
 
-          ii. "GitHub Repo - link to github repo for the project.
+          ii. "GitHub Repo - link to github repo for the project. DONE
 
-4.  Create server.js file. 
+4.  Create server.js file. DONE
 
-    a.    The file should include express npm package.
+    a.    The file should include express npm package. DONE
 
-    b.    The file should include path npm package.
+    b.    The file should include path npm package. DONE
 
-    c.    Set up express connection.
+    c.    Set up express connection. DONE
 
-    d.    Require htmlRoutes.
+    d.    Require htmlRoutes. DONE
 
-    e.    Require apiRoutes.
+    e.    Require apiRoutes. DONE
 
-    f.    Listen to port (local host).
+    f.    Listen to port (local host). DONE
 
 5.  Create htmlRoutes.js file.
 
