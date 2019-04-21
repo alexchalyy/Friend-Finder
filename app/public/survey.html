@@ -294,6 +294,8 @@
 
         // Loop through and display each of the customers
 
+        console.log("Beginning runFriendQuery isFriend = " + isFriend);
+
         var friendList = [];
 
         for (var i = 0; i < friendData.length; i++) {
@@ -306,8 +308,11 @@
           if (n == 0)  {
             console.log("strings are equal!");
             isFriend = true;
+          } else {
+            console.log("Strings are not equal.");
           }
         }
+        console.log("End runFriendQuery isFriend = " + isFriend);
       });
   }
 
@@ -330,9 +335,19 @@
 
   //--------------------------------------------------------------------------------
 
+  function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+
   $(".submit").on("click", function (event) {
     event.preventDefault();
 
+    console.log("Beginning isFriend = " + isFriend);
     //var isFriend = friends.includes("Husky");
     //console.log(isFriend);
     var unanswered = false;
@@ -345,6 +360,8 @@
     };
 
     runFriendQuery(newFriend.name);
+    sleep(5000);
+    console.log("after runFriendQuery isFriend = " + isFriend);
     for (var i = 1; i < 11; i++) {
       var q = "#q" + i.toString();
       var answer = $(q).find(":selected").text().substring(0, 1);
@@ -371,5 +388,6 @@
           console.log(res);
         });
     }
+    console.log("End of program isFriend = " + isFriend);
   });
 </script>
