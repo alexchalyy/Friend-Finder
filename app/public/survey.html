@@ -25,7 +25,7 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Missing Input!</h4>
+          <h4 class="modal-title" id = "t"></h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
@@ -278,78 +278,56 @@
   // Our api recognizes the route... and then runs the associated code (found in api-routes.js).
 
   var isFriend = false;
+  var friendList = [];
+  var sums = [];
+  var pics = [];
 
-  function runFriendQuery(name) {
+  function runFriendQuery() {
 
     // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
 
     $.ajax({ url: "/api/friends", method: "GET" })
       .then(function (friendData) {
-
-        // Here we then log the tableData to console, where it will show up as an object.
-
-        //console.log(friendData);
-        //console.log(friendData[0].name);
-        //console.log("------------------------------------");
-
-        // Loop through and display each of the customers
-
-        console.log("Beginning runFriendQuery isFriend = " + isFriend);
-
-        var friendList = [];
-
         for (var i = 0; i < friendData.length; i++) {
           friendList.push(friendData[i].name);
-          console.log(friendList[i]);
-          //console.log(friendList[i].length);
-          console.log("name = " + name);
-          //console.log(name.length);
-          var n = name.localeCompare(friendList[i]);
-          if (n == 0)  {
-            console.log("strings are equal!");
-            isFriend = true;
-          } else {
-            console.log("Strings are not equal.");
+          pics.push(friendData[i].photo);
+          s = 0;
+          for (var c = 0; c < friendData[i].scores.length; c++)  {
+            s += parseInt(friendData[i].scores[c]);
           }
+          sums.push(s);
         }
-        console.log("End runFriendQuery isFriend = " + isFriend);
+        //console.log("photo:");
+        //console.log(pics);
       });
   }
 
   //--------------------------------------------------------------------------------
-/*
-  function IsFriend(name) {
 
-    //  This function returns true if name is already present in friends json array.
+  function StringCompare(name) {
 
-    runFriendQuery();
-    console.log("IsFriend is running!");
-    console.log(friendList[0]);
-    for (var f = 0; f < friendList.length; f++) {
-        if (friendList[f] == name) {
-          return true;
-        }
-    } 
+    // Return true if name is in the array.
+
+    for (var i = 0; i < friendList.length; i++) {
+      var n = name.toLowerCase().localeCompare(friendList[i].toLowerCase());
+      if (n == 0) {
+        console.log("strings are equal!");
+        isFriend = true;
+        return true;
+      } else {
+        console.log("Strings are not equal.");
+      }
+    }
     return false;
-  } */
+  }
 
   //--------------------------------------------------------------------------------
 
-  function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
-}
-
   $(".submit").on("click", function (event) {
-    event.preventDefault();
 
-    console.log("Beginning isFriend = " + isFriend);
-    //var isFriend = friends.includes("Husky");
-    //console.log(isFriend);
+    //  This function does input validation and adds friend and calculates and displays best match only if it has not been already entered and has all proper data.
+
+    event.preventDefault();
     var unanswered = false;
     var sum = 0;
     // Here we grab the form elements
@@ -359,9 +337,6 @@
       scores: []
     };
 
-    runFriendQuery(newFriend.name);
-    sleep(5000);
-    console.log("after runFriendQuery isFriend = " + isFriend);
     for (var i = 1; i < 11; i++) {
       var q = "#q" + i.toString();
       var answer = $(q).find(":selected").text().substring(0, 1);
@@ -374,20 +349,27 @@
       newFriend.scores.push(answer);
     }
     if (newFriend.name == NaN || newFriend.photo == NaN || unanswered) {
+      $("#t").text("Missing Input!")
       $("#myModal").modal();
-    } else if (isFriend == true) {
-      console.log("Friend is already entered!");
+    } else if (StringCompare(newFriend.name)) {
+      $("#t").text("Friend already present!");
+      $("#myModal").modal();
       isFriend = false;
     } else {
-      console.log("here");
+      friendList.push(newFriend.name);
+      sums.push(sum);
+      //console.log("New sum = " + sum);
+      //console.log(sums);
       $.post("/api/friends", newFriend,
         function (data) {
           console.log("post");
           $("#name").val("");
           $("#phone").val("");
-          console.log(res);
+          //console.log(res);
         });
     }
-    console.log("End of program isFriend = " + isFriend);
   });
+
+  runFriendQuery();
+
 </script>

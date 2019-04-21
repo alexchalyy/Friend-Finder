@@ -25,14 +25,6 @@ module.exports = function(app) {
     res.json(friendData);
   });
 
-  app.get("/api/friends/all", function(req, res)  {
-    return friendData;
-  });
-/*
-  app.get("/api/waitlist", function(req, res) {
-    res.json(waitListData);
-  });
-*/
   // API POST Requests
   // Below code handles when a user submits a form and thus submits data to the server.
   // In each of the below cases, when a user submits form data (a JSON object)
@@ -45,13 +37,8 @@ module.exports = function(app) {
     // Note the code here. Our "server" will respond to requests and let users know if they have a table or not.
     // It will do this by sending out the value "true" have a table
     // req.body is available since we're using the body parsing middleware
-      
+
 
       friendData.push(req.body);
   });
-
-  // ---------------------------------------------------------------------------
-  // I added this below code so you could clear out the table while working with the functionality.
-  // Don"t worry about it!
-
 };
