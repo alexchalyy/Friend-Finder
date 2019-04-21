@@ -93,11 +93,11 @@ Written by Alex Chalyy on 4/19/2019.
 
     a.    Make get route with url /api/friends (display a JSON of all possible friends). DONE
 
-    b.    Make post route /api/friends, this will add new user to json array of users and handle the compatibility logic
+    b.    Make post route /api/friends, this will add new user to json array of users and handle the compatibility logic DONE
 
-          Every time a call is made, if its correct, add it to friends.js array of json objects (friends)
+          Every time a call is made, if its correct, add it to friends.js array of json objects (friends) DONE
 
-          The call accepts the name, link to photo and 10 question answers (with integers of 1-5)
+          The call accepts the name, link to photo and 10 question answers (with integers of 1-5) DONE
 
           Go thru every array json element of friends.js and pic the array element with the smallest absolute value sum difference for questions
 
