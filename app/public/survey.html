@@ -30,6 +30,8 @@
         </div>
         <div class="modal-body">
           <p>Please enter all input values.</p>
+          <img id="match-img"  alt="Card image cap" class="card-img-top" src="http://i3.ytimg.com/vi/vr0qNXmkUJ8/maxresdefault.jpg">
+          <!--<img id="match-img" src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Grosser_Panda.JPG" alt="">-->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -374,7 +376,8 @@
       newFriend.scores.push(answer);
     }
     if (newFriend.name == NaN || newFriend.photo == NaN || unanswered) {
-      $("#t").text("Missing Input!")
+      $("#t").text("Missing Input!");
+      $(".modal-body").text("Please enter all values");
       $("#myModal").modal();
     } else if (StringCompare(newFriend.name)) {
       $("#t").text("Friend already present!");
@@ -386,15 +389,29 @@
       var match = MatchIndex();
       console.log(friendList[match] + " is your best match.");
       $("#t").text("Best Match!");
-      $(".modal-body").text(friendList[match]);
+      //$(".modal-body").text(friendList[match]);
       //$(".modal-body").append("<img src = \"" + pics)
-      $("#myModal").modal();
+      //$("#myModal").modal();
       $.post("/api/friends", newFriend,
         function (data) {
           console.log("post");
           $("#name").val("");
-          $("#phone").val("");
-          //console.log(res);
+          $("#photo").val("");
+          $("#q1").val("");
+          $("#q2").val("");
+          $("#q3").val("");
+          $("#q4").val("");
+          $("#q5").val("");
+          $("#q6").val("");
+          $("#q7").val("");
+          $("#q8").val("");
+          $("#q9").val("");
+          $("#q10").val("");
+          //console.log(data);
+          $(".modal-body").text(data.name);
+          console.log(data.photo);
+          $("#match-img").attr("src", data.photo);
+          $("#myModal").modal();
         });
     }
   });
