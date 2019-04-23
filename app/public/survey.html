@@ -30,6 +30,7 @@
         </div>
         <div class="modal-body">
           <p>Please enter all input values.</p>
+          fff
           <img id="match-img"  alt="Card image cap" class="card-img-top" src="http://i3.ytimg.com/vi/vr0qNXmkUJ8/maxresdefault.jpg">
           <!--<img id="match-img" src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Grosser_Panda.JPG" alt="">-->
         </div>
@@ -408,9 +409,10 @@
           $("#q9").val("");
           $("#q10").val("");
           //console.log(data);
-          $(".modal-body").text(data.name);
+          //$(".modal-body").text(data.name);
+          $(".modal-body").html("<p>" + data.name + "</p>" + "<img src=\"" + data.photo + "\" class=\"img-fluid\" alt=\"Responsive image\">");
           console.log(data.photo);
-          $("#match-img").attr("src", data.photo);
+          //$("#match-img").attr("src", data.photo);
           $("#myModal").modal();
         });
     }
