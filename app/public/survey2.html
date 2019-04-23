@@ -25,7 +25,7 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="t"></h4>
+          <h4 class="modal-title" id = "t"></h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
@@ -36,7 +36,6 @@
         </div>
       </div>
     </div>
-  </div>
   <div class="container">
     <div class="jumbotron" style="background: white;">
       <h1 class="left">Survey Questions</h1>
@@ -292,7 +291,7 @@
           friendList.push(friendData[i].name);
           pics.push(friendData[i].photo);
           s = 0;
-          for (var c = 0; c < friendData[i].scores.length; c++) {
+          for (var c = 0; c < friendData[i].scores.length; c++)  {
             s += parseInt(friendData[i].scores[c]);
           }
           sums.push(s);
@@ -329,9 +328,9 @@
 
     var match = 0;
 
-    if (sums.length < 2) {
+    if (sums.length < 2)  {
       return match;
-    } else {
+    } else  {
       for (var m = 0; m < (sums.length - 2); m++) {
         var dif1 = Math.abs(parseInt(sums[m]) - parseInt(sums[sums.length - 1]));
         var dif2 = Math.abs(parseInt(sums[m + 1]) - parseInt(sums[sums.length - 1]));

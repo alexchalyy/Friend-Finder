@@ -1,6 +1,5 @@
 <!--    This is survey page for Friend Finder website. It contains text boxes for name, link to photo, and 10 questions.
         A lot of code was borrowed from classroom restaurant example.
-
         Written by Alex Chalyy on 4/19/2019.    -->
 
 <!DOCTYPE html>
@@ -25,7 +24,7 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="t"></h4>
+          <h4 class="modal-title">Missing Input!</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
@@ -179,7 +178,7 @@
                 <div class="container">
                   <br>
                   <h5>Question 7</h5>
-                  <p>In a discussion, truth should be more important than people’s sensitivities.</p>
+                  <p>In a discussion, truth should be more important than people's sensitivities.</p>
                   <div class="dropdown">
                     <select class="chosen-select" id="q7">
                       <option value="">Select an option</option>
@@ -217,7 +216,7 @@
                 <div class="container">
                   <br>
                   <h5>Question 9</h5>
-                  <p>You think that everyone’s views should be respected regardless of whether they are supported by
+                  <p>You think that everyone's views should be respected regardless of whether they are supported by
                     facts or not.</p>
                   <div class="dropdown">
                     <select class="chosen-select" id="q9">
@@ -276,83 +275,58 @@
   // In this code below we create the Front-end JavaScript which "POSTS" our form data to our express server.
   // In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
   // Our api recognizes the route... and then runs the associated code (found in api-routes.js).
-
   var isFriend = false;
-  var friendList = [];
-  var sums = [];
-  var pics = [];
-
-  function runFriendQuery() {
-
+  function runFriendQuery(name) {
     // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
-
     $.ajax({ url: "/api/friends", method: "GET" })
       .then(function (friendData) {
+        console.log("Beginning runFriendQuery isFriend = " + isFriend);
+        var friendList = [];
         for (var i = 0; i < friendData.length; i++) {
           friendList.push(friendData[i].name);
-          pics.push(friendData[i].photo);
-          s = 0;
-          for (var c = 0; c < friendData[i].scores.length; c++) {
-            s += parseInt(friendData[i].scores[c]);
+          console.log(friendList[i]);
+          //console.log(friendList[i].length);
+          console.log("name = " + name);
+          //console.log(name.length);
+          var n = name.localeCompare(friendList[i]);
+          if (n == 0)  {
+            console.log("strings are equal!");
+            isFriend = true;
+          } else {
+            console.log("Strings are not equal.");
           }
-          sums.push(s);
         }
-        //console.log("photo:");
-        //console.log(pics);
+        console.log("End runFriendQuery isFriend = " + isFriend);
       });
   }
-
   //--------------------------------------------------------------------------------
-
-  function StringCompare(name) {
-
-    // Return true if name is in the array.
-
-    for (var i = 0; i < friendList.length; i++) {
-      var n = name.toLowerCase().localeCompare(friendList[i].toLowerCase());
-      if (n == 0) {
-        console.log("strings are equal!");
-        isFriend = true;
-        return true;
-      } else {
-        console.log("Strings are not equal.");
-      }
-    }
+/*
+  function IsFriend(name) {
+    //  This function returns true if name is already present in friends json array.
+    runFriendQuery();
+    console.log("IsFriend is running!");
+    console.log(friendList[0]);
+    for (var f = 0; f < friendList.length; f++) {
+        if (friendList[f] == name) {
+          return true;
+        }
+    } 
     return false;
-  }
-
+  } */
   //--------------------------------------------------------------------------------
-
-  function MatchIndex() {
-
-    //  This function returns the index of the best match.
-
-    var match = 0;
-
-    if (sums.length < 2) {
-      return match;
-    } else {
-      for (var m = 0; m < (sums.length - 2); m++) {
-        var dif1 = Math.abs(parseInt(sums[m]) - parseInt(sums[sums.length - 1]));
-        var dif2 = Math.abs(parseInt(sums[m + 1]) - parseInt(sums[sums.length - 1]));
-        console.log("dif1 = " + dif1);
-        console.log("dif2 = " + dif2);
-        if (dif1 > dif2) {
-          match = m + 1;
-        } else match = m;
-      }
-      console.log("match = " + match);
-      return match;
+  function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
     }
   }
-
-  //--------------------------------------------------------------------------------
-
+}
   $(".submit").on("click", function (event) {
-
-    //  This function does input validation and adds friend and calculates and displays best match only if it has not been already entered and has all proper data.
-
     event.preventDefault();
+    console.log("Beginning isFriend = " + isFriend);
+    //var isFriend = friends.includes("Husky");
+    //console.log(isFriend);
     var unanswered = false;
     var sum = 0;
     // Here we grab the form elements
@@ -361,7 +335,9 @@
       photo: $("#photo").val().trim(),
       scores: []
     };
-
+    runFriendQuery(newFriend.name);
+    sleep(5000);
+    console.log("after runFriendQuery isFriend = " + isFriend);
     for (var i = 1; i < 11; i++) {
       var q = "#q" + i.toString();
       var answer = $(q).find(":selected").text().substring(0, 1);
@@ -374,31 +350,20 @@
       newFriend.scores.push(answer);
     }
     if (newFriend.name == NaN || newFriend.photo == NaN || unanswered) {
-      $("#t").text("Missing Input!")
       $("#myModal").modal();
-    } else if (StringCompare(newFriend.name)) {
-      $("#t").text("Friend already present!");
-      $("#myModal").modal();
+    } else if (isFriend == true) {
+      console.log("Friend is already entered!");
       isFriend = false;
     } else {
-      friendList.push(newFriend.name);
-      sums.push(sum);
-      var match = MatchIndex();
-      console.log(friendList[match] + " is your best match.");
-      $("#t").text("Best Match!");
-      $(".modal-body").text(friendList[match]);
-      //$(".modal-body").append("<img src = \"" + pics)
-      $("#myModal").modal();
+      console.log("here");
       $.post("/api/friends", newFriend,
         function (data) {
           console.log("post");
           $("#name").val("");
           $("#phone").val("");
-          //console.log(res);
+          console.log(res);
         });
     }
+    console.log("End of program isFriend = " + isFriend);
   });
-
-  runFriendQuery();
-
 </script>
