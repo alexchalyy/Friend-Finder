@@ -4,7 +4,7 @@
 
 # Home Page
 
-At the beginning, when user goes to the website url (https://obscure-lowlands-14501.herokuapp.com/), user is navitated to the homepage describing the "Friend Finder" web site (as shown below).
+At the beginning, when user goes to the website url (https://obscure-lowlands-14501.herokuapp.com/), user is navigated to the homepage describing the "Friend Finder" web site (as shown below).
 
 ![home page](home.PNG)
 
