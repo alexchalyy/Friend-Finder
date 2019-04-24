@@ -39,7 +39,29 @@ module.exports = function(app) {
     //  This function returns the index of the best match.
 
     var match = 0;
+    var diff = [];
 
+    if (friendData.length < 2)  {
+      return match;
+    } else  {
+      for (var i = 0; i < (sums.length - 1); i++) {
+        console.log("\nFriend index = " + i);
+        console.log("Friend: " + friendData[i].name);
+        console.log("sum = " + sums[i]);
+        var d = Math.abs(parseInt(sums[i]) - parseInt(sums[sums.length - 1]));
+        console.log("difference = " + d);
+        diff.push(d);
+      }
+      for (var i = 0; i < diff.length; i++) {
+        if (diff[match] > diff[i])  {
+          match = i;
+        }
+      }
+      console.log("\nMatch index = " + match);
+      return match;
+    }
+
+    /*
     if (friendData.length < 2) {
       return match;
     } else {
@@ -54,7 +76,7 @@ module.exports = function(app) {
       }
       console.log("match = " + match);
       return match;
-    }
+    }*/
   }
 
   //---------------------------------------------------------------
@@ -64,7 +86,7 @@ module.exports = function(app) {
     // It will do this by sending out the value "true" have a table
     // req.body is available since we're using the body parsing middleware
       
-
+      friendData.push(req.body);
       for (var i = 0; i < friendData.length; i++) {
         //friendList.push(friendData[i].name);
         //pics.push(friendData[i].photo);
@@ -79,6 +101,5 @@ module.exports = function(app) {
       //console.log("photo:");
       //console.log(pics);
       res.send(friendData[match]);
-      friendData.push(req.body);
   });
 };

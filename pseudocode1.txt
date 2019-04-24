@@ -1,0 +1,16 @@
+Find index of closest match
+
+1. Create differences array and make it empty.
+
+2. For every element in sums array.
+
+   a. calculate the absolute value of difference of the last element and every element of the array starting from the beginning.
+
+   b. append that difference to the new difference array.
+
+   c. console log it.
+
+3. In the new difference array go thru every element (except the last) and pick the smallest number.
+
+4. Return index of the smallest number in the array.
+

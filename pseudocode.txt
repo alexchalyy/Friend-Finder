@@ -99,10 +99,10 @@ Written by Alex Chalyy on 4/19/2019.
 
           The call accepts the name, link to photo and 10 question answers (with integers of 1-5) DONE
 
-          Go thru every array json element of friends.js and pic the array element with the smallest absolute value sum difference for questions
+          Go thru every array json element of friends.js and pic the array element with the smallest absolute value sum difference for questions DONE
 
-          display the proper result (name, and picture) in modal window
+          display the proper result (name, and picture) in modal window. DONE
 
 7.  Make friends.js file with array of json objects with name, photo link, and scores (array of 10 integers). DONE
 
-8.  Post on heroku.
+8.  Post on heroku. DONE
