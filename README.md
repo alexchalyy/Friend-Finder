@@ -38,4 +38,4 @@ If the user enters a proper "friend" information that has not been entered befor
 
 # Homework Creation Process
 
-The front end of application was written in static html and styled in bootstrap to be responsive. The back end of application was written in Javascript using node.js, express, and path npm packages. The whole application was than hosted on heroku.
+The front end of application was written in static html and styled in bootstrap to be responsive. The back end of application was written in Javascript using jQueries, node.js, express, and path npm packages. The whole application was than hosted on heroku.
