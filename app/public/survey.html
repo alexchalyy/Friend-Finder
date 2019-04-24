@@ -363,7 +363,6 @@
       $("#t").text("Best Match!");
       $.post("/api/friends", newFriend,
         function (data) {
-          console.log("post");
           $("#name").val("");
           $("#photo").val("");
           $("#q1").val("");
