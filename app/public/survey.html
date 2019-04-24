@@ -274,11 +274,7 @@
 
 </html>
 
-<!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
 <script type="text/javascript">
-  // In this code below we create the Front-end JavaScript which "POSTS" our form data to our express server.
-  // In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
-  // Our api recognizes the route... and then runs the associated code (found in api-routes.js).
 
   var isFriend = false;
   var friendList = [];
@@ -287,7 +283,8 @@
 
   function runFriendQuery() {
 
-    // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+    // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost).
+    // This program gets friend data for input validation purposes.
 
     $.ajax({ url: "/api/friends", method: "GET" })
       .then(function (friendData) {
