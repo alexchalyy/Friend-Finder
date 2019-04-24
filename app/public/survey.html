@@ -349,7 +349,7 @@
       $("#myModal").modal();
     } else if (StringCompare(newFriend.name)) {
       $("#t").text("Friend already present!");
-      $(".modal-body").val("");
+      $(".modal-body").html("");
       $("#myModal").modal();
       isFriend = false;
     } else {
