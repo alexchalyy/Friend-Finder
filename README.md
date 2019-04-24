@@ -18,7 +18,7 @@ The home page contains several links:
 
 ![repository](github-repo.PNG)
 
-* When the user clicks on "Go to Survey" button, survey hage is opened as shown below:
+* When the user clicks on "Go to Survey" button, survey page is opened as shown below:
 
 ![survey page](survey.PNG)
 
