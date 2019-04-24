@@ -8,8 +8,6 @@
 
 var friendData = require("../data/friends");
 var sums = [];
-//var waitListData = require("../data/waitinglistData");
-
 
 // ===============================================================================
 // ROUTING
@@ -60,23 +58,6 @@ module.exports = function(app) {
       console.log("\nMatch index = " + match);
       return match;
     }
-
-    /*
-    if (friendData.length < 2) {
-      return match;
-    } else {
-      for (var m = 0; m < (friendData.length - 2); m++) {
-        var dif1 = Math.abs(parseInt(sums[m]) - parseInt(sums[sums.length - 1]));
-        var dif2 = Math.abs(parseInt(sums[m + 1]) - parseInt(sums[sums.length - 1]));
-        console.log("dif1 = " + dif1);
-        console.log("dif2 = " + dif2);
-        if (dif1 > dif2) {
-          match = m + 1;
-        } else match = m;
-      }
-      console.log("match = " + match);
-      return match;
-    }*/
   }
 
   //---------------------------------------------------------------
@@ -88,8 +69,6 @@ module.exports = function(app) {
       
       friendData.push(req.body);
       for (var i = 0; i < friendData.length; i++) {
-        //friendList.push(friendData[i].name);
-        //pics.push(friendData[i].photo);
         s = 0;
         for (var c = 0; c < friendData[i].scores.length; c++) {
           s += parseInt(friendData[i].scores[c]);
@@ -98,8 +77,6 @@ module.exports = function(app) {
       }
       var match = MatchIndex();
       sums = [];
-      //console.log("photo:");
-      //console.log(pics);
       res.send(friendData[match]);
   });
 };
