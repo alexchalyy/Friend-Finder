@@ -34,10 +34,6 @@ Other input validation is used as well.
 
 If the user enters a proper "friend" information that has not been entered before, the json friend array is appended with new information, and a pop-up window is displayed with closest question score match "friend" to the freshly entered "friend" (shown below).
 
-![husky](husky.PNG)
-
-https://obscure-lowlands-14501.herokuapp.com/
-
 # Homework Creation Process
 
 The front end of application was written in static html and styled in bootstrap to be responsive. The back end of application was written in Javascript using jQueries, node.js, express, and path npm packages. The whole application was than hosted on heroku.
